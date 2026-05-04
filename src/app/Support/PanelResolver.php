@@ -46,9 +46,14 @@ class PanelResolver
 
     /**
      * Check whether a user is allowed to access a given Filament panel.
+     * super_admin can access all panels.
      */
     public static function canAccess(User $user, string $panelId): bool
     {
+        if (static::roleOf($user) === 'super_admin') {
+            return true;
+        }
+
         return (static::$panelIds[static::roleOf($user)] ?? null) === $panelId;
     }
 
