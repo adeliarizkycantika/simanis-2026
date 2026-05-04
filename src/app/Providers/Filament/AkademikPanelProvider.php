@@ -2,12 +2,20 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Admin\Resources\OrtuResource;
+use App\Filament\Admin\Resources\StudentResource;
+use App\Filament\Admin\Resources\TeacherResource;
+use App\Models\Ortu;
+use App\Models\Student;
+use App\Models\Teacher;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages;
 use Filament\Panel;
+use Filament\Navigation\MenuItem;
+use Filament\Navigation\NavigationGroup;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
@@ -28,6 +36,10 @@ class AkademikPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
+            ->login(false)
+            ->spa()
+            ->passwordReset()
+            ->registration()
             ->discoverResources(in: app_path('Filament/Akademik/Resources'), for: 'App\\Filament\\Akademik\\Resources')
             ->discoverPages(in: app_path('Filament/Akademik/Pages'), for: 'App\\Filament\\Akademik\\Pages')
             ->pages([
