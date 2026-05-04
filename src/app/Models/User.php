@@ -67,4 +67,16 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
     {
         return PanelResolver::canAccess($this, $panel->getId());
     }
+
+    /** Only super_admin can impersonate others */
+    public function canImpersonate(): bool
+    {
+        return $this->hasRole('super_admin');
+    }
+
+    /** Prevent impersonating another super_admin */
+    public function canBeImpersonated(): bool
+    {
+        return ! $this->hasRole('super_admin');
+    }
 }

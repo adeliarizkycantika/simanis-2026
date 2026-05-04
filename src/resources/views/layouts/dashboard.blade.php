@@ -8,6 +8,7 @@
     @livewireStyles
 </head>
 <body class="antialiased">
+    <x-impersonate::banner/>
     {{ $slot }}
     @livewireScripts
 </body>
