@@ -53,11 +53,11 @@ class PanelResolver
     }
 
     /**
-     * Resolve redirect URL for a given user based on their role.
+     * Resolve redirect URL after login — always goes to dashboard first.
      */
     public static function redirectUrl(User $user): string
     {
-        return static::$map[static::roleOf($user)] ?? '/';
+        return route('dashboard');
     }
 
     /**
