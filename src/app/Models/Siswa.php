@@ -27,6 +27,20 @@ class Siswa extends Model
         'foto',
     ];
 
+    public static function getAllowedFields(): array
+    {
+        return ['id', 'nama', 'nisn', 'nis', 'email', 'status_siswa', 'kelas_id', 'tingkat_id', 'jurusan_id'];
+    }
+
+    public static function getAllowedSorts(): array
+    {
+        return ['nama', 'nisn', 'nis', 'created_at', 'status_siswa'];
+    }
+
+    public static function getAllowedFilters(): array
+    {
+        return ['nama', 'nisn', 'nis', 'status_siswa', 'kelas_id', 'tingkat_id', 'jurusan_id'];
+    }
     protected $casts = [
         'is_yatim_piatu' => 'boolean',
         'nilai_rapor'    => 'decimal:2',

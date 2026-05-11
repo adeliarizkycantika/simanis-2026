@@ -1,0 +1,19 @@
+@baseUrl = https://simanis.test
+@token = 3|j5t6QgijXJ1rScFCDAtcFA5lFacfc0avucjWDaGNfb376a76
+### Login — dapatkan token
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@admin.com",
+  "password": "password"
+}
+
+###
+
+### List semua buku
+GET {{baseUrl}}/api/admin/pasiens
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
